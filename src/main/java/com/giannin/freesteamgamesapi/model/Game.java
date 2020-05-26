@@ -9,7 +9,7 @@ public class Game {
     private String shortDescription;
     private String thumbnail;
     private String website;
+    private String releaseDate;
     private List<Genre> genres;
     private List<Category> categories;
-    private ReleaseDate releaseDate;
 }
