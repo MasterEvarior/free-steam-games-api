@@ -14,19 +14,18 @@ import java.util.List;
 @Slf4j
 public class SteamDBFreeGamesPage {
 
-    public static List<String> getSteamGameIds(){
+    public static List<String> getSteamGameIds() {
         try {
             List<String> returnList = new ArrayList<>();
             Document webpage = Jsoup.connect("https://steamdb.info/upcoming/free/").get();
-            Elements tables = webpage.select("table");
-            for (Element table: tables) {
-                Elements rowsWithApps = table.getElementsByAttribute("data-appid");
-                for (Element row: rowsWithApps) {
-                    returnList.add(row.attributes().get("data-appid"));
-                }
+            //Only get the first one because the other promotions are not live yet
+            Element table = webpage.select("table").get(0);
+            Elements rowsWithApps = table.getElementsByAttribute("data-appid");
+            for (Element row : rowsWithApps) {
+                returnList.add(row.attributes().get("data-appid"));
             }
             return returnList;
-        }catch (IOException e){
+        } catch (IOException e) {
             log.error("Could not fetch the SteamDB page because of the following error: ", e);
             throw new DataFetchException("Fetching data from https://steamdb.info/upcoming/free/ is currently not possible");
         }
