@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: "sa"
+    password: "sa"
+    url: "jdbc:h2:mem:free-steam-games-api-test-db"
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
