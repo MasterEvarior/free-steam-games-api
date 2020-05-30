@@ -14,4 +14,9 @@ public class Category {
     @Setter(AccessLevel.NONE)
     private Integer id;
     private String description;
+
+    public Category(Integer id, String description){
+        this.id = id;
+        this.description = description;
+    }
 }
