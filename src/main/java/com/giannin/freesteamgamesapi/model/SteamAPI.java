@@ -1,7 +1,6 @@
 package com.giannin.freesteamgamesapi.model;
 
 import com.giannin.freesteamgamesapi.exception.DataFetchException;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -20,7 +19,7 @@ public class SteamAPI {
             if(json.getJSONObject(id).getBoolean("success")) {
                 return json;
             }else {
-                String message = String.format("Request for the id '%s' could not be fulfilled the API returned a 'no-success'-message.");
+                String message = String.format("Request for the id '%s' could not be fulfilled the API returned a 'no-success'-message.", id);
                 log.error(message);
                 throw new DataFetchException(message);
             }
