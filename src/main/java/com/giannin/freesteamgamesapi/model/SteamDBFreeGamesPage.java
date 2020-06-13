@@ -17,7 +17,7 @@ public class SteamDBFreeGamesPage {
     public static List<String> getSteamGameIds() {
         try {
             List<String> returnList = new ArrayList<>();
-            Document webpage = Jsoup.connect("https://steamdb.info/upcoming/free/").get();
+            Document webpage = Jsoup.connect("https://steamdb.info/upcoming/free/").userAgent("Mozilla / 5.0(Windows NT 10.0; Win64; x64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 81.0.4044.138 Safari / 537.36").get();
             //Only get the first one because the other promotions are not live yet
             Element table = webpage.select("table").get(0);
             Elements rowsWithApps = table.getElementsByAttribute("data-appid");
