@@ -1,19 +1,16 @@
 package com.giannin.freesteamgamesapi.model;
 
-import com.giannin.freesteamgamesapi.exception.DataFetchException;
 import lombok.*;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 @Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,9 +24,9 @@ public class Game {
     private String thumbnail;
     private String website;
     private String releaseDate;
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<Genre> genres;
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     private List<Category> categories;
 
     public Game(String steamId) throws JSONException {
