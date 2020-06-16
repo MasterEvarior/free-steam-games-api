@@ -15,10 +15,6 @@ import java.util.List;
 public class WebScraperService {
     @Autowired
     GameService gameService;
-    @Autowired
-    CategoryService categoryService;
-    @Autowired
-    GenreService genreService;
 
     @Scheduled(fixedRate = 10000) //TODO make more configurable
     public void updateDatabase(){
@@ -27,16 +23,6 @@ public class WebScraperService {
         for (String id: gameIds) {
             try {
                 Game game = new Game(id);
-           /*     game.getCategories().forEach(category -> {
-                    if(!this.categoryService.genreAlreadyExists(category)){
-                        this.categoryService.save(category);
-                    }
-                });
-                game.getGenres().forEach(genre ->  {
-                    if(!this.genreService.genreAlreadyExists(genre)){
-                        this.genreService.save(genre);
-                    }
-                });*/
                 gameService.save(game);
             } catch (JSONException e) {
                 e.printStackTrace();

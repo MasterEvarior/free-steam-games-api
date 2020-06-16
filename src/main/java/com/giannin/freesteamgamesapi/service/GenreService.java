@@ -28,8 +28,4 @@ public class GenreService {
     public void delete(Integer id){
         repository.deleteById(id);
     }
-
-    public boolean genreAlreadyExists(Genre input){
-        return repository.findGenreByIdAndDescription(input.getId(),input.getDescription()).isPresent();
-    }
 }
