@@ -20,6 +20,7 @@ public class Game {
     private Integer steamId;
     private String name;
     private Integer requiredAge;
+    @Column(length = 1000)
     private String shortDescription;
     private String thumbnail;
     private String website;
